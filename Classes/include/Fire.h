@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <SDL3/SDL.h>
+
+#include "Time.h"
 class Fire {
   public:
   std::vector<SDL_FRect> bullets;
@@ -16,4 +18,4 @@ class Fire {
   void Render(SDL_Renderer* renderer);
 };
 
-#endif //GAMEENGINE_FIRE_H
+#endif

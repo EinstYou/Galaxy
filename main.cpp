@@ -4,12 +4,12 @@
 #include <SDL3_ttf/SDL_ttf.h>
 
 #include "Background.h"
-#include "Player.h"
 #include "Collision2D.h"
 #include "Fire.h"
+#include "Health.h"
+#include "Player.h"
 #include "Rock.h"
 #include "Score.h"
-
 
 int main(int argc, char* argv[]) {
 
@@ -53,6 +53,7 @@ int main(int argc, char* argv[]) {
     Fire fire;
     Rock rock(renderer);
     Score score;
+    Health health(renderer);
 
 
     bool running = true;
@@ -72,9 +73,15 @@ int main(int argc, char* argv[]) {
         player.Update(deltaTime);
         fire.Update(deltaTime);
         rock.Update(deltaTime);
+        health.Update();
 
 
         for(int x = rock.asteroids.size() - 1; x >= 0; x--) {
+            if (Collision2D::CheckCollision(rock.asteroids[x].collision, player.collision)) {
+                health.health--;
+                rock.asteroids.erase(rock.asteroids.begin() + x);
+                break;
+            }
             for(int y = fire.bullets.size() - 1; y >= 0; y--) {
                 if (Collision2D::CheckCollision(rock.asteroids[x].collision, fire.bullets[y])) {
                     rock.asteroids.erase(rock.asteroids.begin() + x);
@@ -98,6 +105,8 @@ int main(int argc, char* argv[]) {
         rock.Render(renderer);
 
         score.Render(renderer);
+
+        health.RenderHealth(renderer);
 
         SDL_RenderPresent(renderer);
     }

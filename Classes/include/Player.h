@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include "Input.h"
+#include "Time.h"
 
 class Player {
 public:

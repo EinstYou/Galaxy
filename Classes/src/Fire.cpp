@@ -10,7 +10,7 @@ Fire::Fire() {
 
 
 void Fire::FireBullet(SDL_Event* e, float posX, float posY) {
-    if (Input::Get_Button(e, SDL_SCANCODE_J) && canFire) {
+    if (Input::Get_Button(e, SDL_SCANCODE_J) && canFire && Time::timeScale != 0.0f) {
         SDL_FRect bullet = {posX, posY, 6, 25};
         bullets.push_back(bullet);
         canFire = false;
@@ -27,7 +27,7 @@ void Fire::Render(SDL_Renderer *renderer) {
 
 void Fire::Update(float deltaTime) {
     if (!canFire) {
-        cooldown += deltaTime;
+        cooldown += deltaTime * Time::timeScale;
         if (cooldown >= 0.1) {
             canFire = true;
             cooldown = 0;

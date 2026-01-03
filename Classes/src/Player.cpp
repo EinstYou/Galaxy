@@ -2,9 +2,6 @@
 
 
 
-
-
-
 Player::Player(SDL_Renderer* renderer) {
     SDL_Surface* surface = IMG_Load("../Sprites/Main Ship - Base - Full health.png");
     texture = SDL_CreateTextureFromSurface(renderer, surface);
@@ -19,8 +16,6 @@ Player::Player(SDL_Renderer* renderer) {
 }
 
 void Player::Render(SDL_Renderer *renderer) {
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-    SDL_RenderRect(renderer, &collision);
     SDL_RenderTexture(renderer, texture, nullptr, &rect);
 }
 void Player::Event(SDL_Event * event) {
@@ -30,8 +25,8 @@ void Player::Update(float deltaTime) {
 
     float oldX = rect.x;
     float oldY = rect.y;
-    rect.x += velocityX * deltaTime;
-    rect.y += velocityY * deltaTime;
+    rect.x += velocityX * deltaTime * Time::timeScale;
+    rect.y += velocityY * deltaTime * Time::timeScale;
     collision = {rect.x + 15, rect.y + 20, 65,55};
     if (collision.x + collision.w > 1024 || collision .x < 0) {
         rect.x = oldX;

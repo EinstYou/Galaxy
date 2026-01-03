@@ -9,6 +9,7 @@
 
 #include "Collision2D.h"
 #include "Score.h"
+#include "Time.h"
 
 class Rock {
 public:

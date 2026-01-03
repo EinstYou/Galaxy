@@ -6,6 +6,8 @@ add_library(Classes
         "src/Fire.cpp"
         "src/Rock.cpp"
         "src/Score.cpp"
+        "src/Health.cpp"
+        "src/Time.cpp"
 )
 target_include_directories(Classes PUBLIC "include")
 target_link_libraries(Classes PUBLIC SDL3::SDL3)

@@ -8,7 +8,7 @@
 
 class Score{
     public:
-    int score;
+    static int score;
     char scoreText[4];
     SDL_FRect rect;
     SDL_Color color;
