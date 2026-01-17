@@ -1,3 +1,14 @@
-Hello this my SDL project
+a SDL project
 
-You can do everthing what you want with this project.
+
+needed librarys:
+SDL: git clone https://github.com/libsdl-org/SDL.git
+SDL_image: git clone https://github.com/libsdl-org/SDL_image.git
+SDL_ttf: git clone https://github.com/libsdl-org/SDL_ttf.git
+
+
+build:
+
+cmake -B build
+cmake --build build
+./build/Galaxy
