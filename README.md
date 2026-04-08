@@ -15,5 +15,7 @@ SDL_ttf: git clone https://github.com/libsdl-org/SDL_ttf.git
 build:
 
 cmake -B build
+
 cmake --build build
-./build/Galaxy
+
+build\Galaxy
